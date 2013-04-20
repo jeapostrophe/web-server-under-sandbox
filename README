@@ -1,0 +1,30 @@
+This is meant to help isolate what looks like a memory-leaking bug
+in web server.
+
+First, precompile the software:
+
+     raco make server.rkt sandboxed-server.rkt
+
+
+Next, run sandboxed-server.rkt; keep it open.  We'll set the memory
+limit to 90MB.
+
+    racket sandboxed-server.rkt --memory-limit 90
+
+Note that the server is trivial: it just errors out directly.
+
+
+Finally, open your browser to a torture-test url that the web server serves:
+
+    http://localhost:8080/tests.html
+
+This basically hammers the web server with a bunch of requests, over
+and over.  After about a minute, I observe that the web server
+crashes, with the following output:
+
+evaluator: terminated (out-of-memory)
+  context...:
+   /Users/dyoo/local/racket/collects/racket/sandbox.rkt:995:38
+   /Users/dyoo/local/racket/collects/racket/sandbox.rkt:818:2: user-eval
+   /Users/dyoo/work/web-server-under-sandbox/sandboxed-server.rkt:28:0: loop
+   /Users/dyoo/work/web-server-under-sandbox/sandboxed-server.rkt: [running body]
