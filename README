@@ -11,13 +11,13 @@ limit to 90MB.
 
     racket sandboxed-server.rkt --memory-limit 90
 
-Note that the server is trivial: it just errors out directly.
+Note that the server is trivial: it just returns a simple response.
 But it also errors out if you substitute server.rkt's definition of
 start with
 
     (define (start req)
-      #;(error 'test "trying to trace gc error")
-      (response/xexpr '(html (head) (body "Ok"))))
+      (error 'test "trying to trace gc error")
+      #;(response/xexpr '(html (head) (body "Ok"))))
 
 
 
@@ -35,3 +35,6 @@ evaluator: terminated (out-of-memory)
    /Users/dyoo/local/racket/collects/racket/sandbox.rkt:818:2: user-eval
    /Users/dyoo/work/web-server-under-sandbox/sandboxed-server.rkt:28:0: loop
    /Users/dyoo/work/web-server-under-sandbox/sandboxed-server.rkt: [running body]
+
+
+I'm seeing this under Mac OS X.
