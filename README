@@ -37,4 +37,4 @@ evaluator: terminated (out-of-memory)
    /Users/dyoo/work/web-server-under-sandbox/sandboxed-server.rkt: [running body]
 
 
-I'm seeing this under Mac OS X.
+I'm seeing this under Mac OS X, after about Pass 4 through the torture test.
