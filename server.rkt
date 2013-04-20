@@ -11,8 +11,8 @@
 (define-runtime-path htdocs (build-path "htdocs"))
 
 (define (start req)
-  (error 'test "trying to trace gc error")
-  #;(response/xexpr '(html (head) (body "Ok"))))
+  #;(error 'test "trying to trace gc error")
+  (response/xexpr '(html (head) (body "Ok"))))
 
 (define (start-server #:port [port 8000]
                       #:listen-ip [listen-ip "127.0.0.1"])

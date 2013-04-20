@@ -12,6 +12,13 @@ limit to 90MB.
     racket sandboxed-server.rkt --memory-limit 90
 
 Note that the server is trivial: it just errors out directly.
+But it also errors out if you substitute server.rkt's definition of
+start with
+
+    (define (start req)
+      #;(error 'test "trying to trace gc error")
+      (response/xexpr '(html (head) (body "Ok"))))
+
 
 
 Finally, open your browser to a torture-test url that the web server serves:
