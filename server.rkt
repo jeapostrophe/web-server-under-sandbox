@@ -2,6 +2,7 @@
 
 (require web-server/servlet-env
          web-server/servlet
+         web-server/http/xexpr
          racket/runtime-path
          (for-syntax racket/base))
 
@@ -10,7 +11,8 @@
 (define-runtime-path htdocs (build-path "htdocs"))
 
 (define (start req)
-  #"Ok")
+  (error 'test "trying to trace gc error")
+  #;(response/xexpr '(html (head) (body "Ok"))))
 
 (define (start-server #:port [port 8000]
                       #:listen-ip [listen-ip "127.0.0.1"])

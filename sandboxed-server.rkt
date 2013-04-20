@@ -8,7 +8,7 @@
 
 
 (define current-port (make-parameter 8080))
-(define current-memory-limit (make-parameter 256))
+(define current-memory-limit (make-parameter 90))
 (void (command-line
        #:once-each 
        [("-p" "--port") p "Port (default 8080)" 
